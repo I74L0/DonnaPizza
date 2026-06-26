@@ -57,15 +57,14 @@ const ContactSection = () => {
           <div className="md:w-1/2 h-80 bg-gray-200 rounded-2xl overflow-hidden relative border border-gray-100">
             {/* Imagem de placeholder para mapa usando iframe mockado ou imagem */}
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1500!2d-37.0!3d-10.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1" 
-              width="100%" 
-              height="100%" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.897887478659!2d-37.0625268!3d-10.971079699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71ab114d085c739%3A0x94c5bd58ceaa4c7b!2sDonna%20Pizza!5e0!3m2!1spt-BR!2sbr!4v1782445232251!5m2!1spt-BR!2sbr" 
+              width="600" 
+              height="450" 
               style={{ border: 0 }} 
               allowFullScreen="" 
               loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Mapa de Localização"
-            ></iframe>
+              referrerPolicy="strict-origin-when-cross-origin">
+            </iframe>
           </div>
         </div>
       </div>
