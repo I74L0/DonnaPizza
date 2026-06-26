@@ -33,26 +33,26 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8 items-center">
-            <a href="#inicio" className="text-gray-800 hover:text-primary font-medium transition-colors">Início</a>
-            <a href="#cardapio" className="text-gray-800 hover:text-primary font-medium transition-colors">Cardápio</a>
-            <a href="#contato" className="text-gray-800 hover:text-primary font-medium transition-colors">Contato</a>
+            <a href="#inicio" className={`${isScrolled ? 'text-gray-800' : 'text-white'} hover:text-primary font-medium transition-colors`}>Início</a>
+            <a href="#cardapio" className={`${isScrolled ? 'text-gray-800' : 'text-white'} hover:text-primary font-medium transition-colors`}>Cardápio</a>
+            <a href="#contato" className={`${isScrolled ? 'text-gray-800' : 'text-white'} hover:text-primary font-medium transition-colors`}>Contato</a>
             
-            <button onClick={() => setIsHistoryOpen(true)} className="text-gray-800 hover:text-primary font-medium transition-colors flex items-center gap-1">
+            <button onClick={() => setIsHistoryOpen(true)} className={`${isScrolled ? 'text-gray-800' : 'text-white'} hover:text-primary font-medium transition-colors flex items-center gap-1`}>
               <Clock size={18} /> Meus Pedidos
             </button>
-          <button onClick={toggleCart} className="btn-secondary flex items-center gap-2 relative">
-            <ShoppingCart size={20} /> Carrinho
-            {cartItemsCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
-                {cartItemsCount}
-              </span>
-            )}
-          </button>
-        </nav>
+            <button onClick={toggleCart} className="btn-secondary flex items-center gap-2 relative">
+              <ShoppingCart size={20} /> Carrinho
+              {cartItemsCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                  {cartItemsCount}
+                </span>
+              )}
+            </button>
+          </nav>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-4">
-          <button onClick={toggleCart} className="text-gray-800 relative">
+          <button onClick={toggleCart} className={`${isScrolled ? 'text-gray-800' : 'text-white'} relative`}>
             <ShoppingCart size={24} />
             {cartItemsCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
@@ -61,7 +61,7 @@ const Header = () => {
             )}
           </button>
           <button 
-            className="text-gray-800 focus:outline-none"
+            className={`${isScrolled ? 'text-gray-800' : 'text-white'} focus:outline-none`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}

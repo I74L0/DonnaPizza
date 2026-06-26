@@ -7,7 +7,7 @@ const Footer = () => {
         <img 
           src="/donnapizza-logo.png" 
           alt="Donna Pizza Logo" 
-          className="h-16 mx-auto mb-6 brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+          className="h-16 mx-auto mb-6 opacity-90 hover:opacity-100 transition-opacity"
         />
         <p className="text-gray-400 mb-6 max-w-md mx-auto">
           A paixão por pizza levada a sério. Ingredientes de qualidade e muito sabor em cada pedaço.
