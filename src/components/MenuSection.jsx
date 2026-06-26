@@ -13,10 +13,11 @@ const MenuSection = () => {
     // Busca dados do backend
     const fetchData = async () => {
       try {
+        const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
         const [catRes, sizesRes, crustsRes] = await Promise.all([
-          fetch('http://127.0.0.1:8000/api/categories/'),
-          fetch('http://127.0.0.1:8000/api/sizes/'),
-          fetch('http://127.0.0.1:8000/api/crusts/')
+          fetch(`${API_URL}/api/categories/`),
+          fetch(`${API_URL}/api/sizes/`),
+          fetch(`${API_URL}/api/crusts/`)
         ]);
         
         const catData = await catRes.json();

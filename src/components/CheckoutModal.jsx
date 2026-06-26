@@ -46,7 +46,8 @@ const CheckoutModal = ({ onClose, onComplete }) => {
         items: itemsPayload
       };
 
-      const response = await fetch('http://127.0.0.1:8000/api/orders/checkout/', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const response = await fetch(`${API_URL}/api/orders/checkout/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

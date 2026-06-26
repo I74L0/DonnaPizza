@@ -8,7 +8,8 @@ const OrdersHistoryModal = ({ onClose }) => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/orders/');
+        const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+        const response = await fetch(`${API_URL}/api/orders/`);
         const data = await response.json();
         setOrders(data);
       } catch (error) {
