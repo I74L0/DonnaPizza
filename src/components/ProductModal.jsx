@@ -30,74 +30,75 @@ const ProductModal = ({ product, sizes, crusts, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black/60 z-[80] flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden relative">
-        <button onClick={onClose} className="absolute top-4 right-4 bg-white/50 hover:bg-white rounded-full p-2 transition-colors z-10">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg flex flex-col max-h-[90vh] relative">
+        <button onClick={onClose} className="absolute top-4 right-4 bg-white/80 hover:bg-white rounded-full p-2 transition-colors z-10 shadow-sm">
           <X />
         </button>
         
-        <img src={product.image} alt={product.name} className="w-full h-64 object-cover" />
-        
-        <div className="p-6">
-          <h2 className="text-3xl font-display font-bold mb-2">{product.name}</h2>
-          <p className="text-gray-600 mb-6">{product.description}</p>
+        <div className="overflow-y-auto flex-1 rounded-t-2xl">
+          <img src={product.image} alt={product.name} className="w-full h-48 sm:h-64 object-cover shrink-0" />
           
-          {isPizza && (
-            <>
-              {/* Tamanhos */}
-              <div className="mb-6">
-                <h3 className="font-bold text-lg mb-3">Escolha o Tamanho</h3>
-                <div className="grid grid-cols-3 gap-3">
-                  {sizes.map((size) => (
-                    <button 
-                      key={size.id}
-                      onClick={() => setSelectedSize(size)}
-                      className={`py-2 px-3 rounded-lg border text-sm font-semibold transition-all ${
-                        selectedSize?.id === size.id 
-                          ? 'border-primary bg-primary/10 text-primary' 
-                          : 'border-gray-200 text-gray-600 hover:border-gray-300'
-                      }`}
-                    >
-                      {size.name}
-                    </button>
-                  ))}
+          <div className="p-4 sm:p-6">
+            <h2 className="text-2xl sm:text-3xl font-display font-bold mb-2">{product.name}</h2>
+            <p className="text-gray-600 mb-6 text-sm sm:text-base">{product.description}</p>
+            
+            {isPizza && (
+              <>
+                {/* Tamanhos */}
+                <div className="mb-6">
+                  <h3 className="font-bold text-lg mb-3">Escolha o Tamanho</h3>
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                    {sizes.map((size) => (
+                      <button 
+                        key={size.id}
+                        onClick={() => setSelectedSize(size)}
+                        className={`py-2 px-1 sm:px-3 rounded-lg border text-xs sm:text-sm font-semibold transition-all ${
+                          selectedSize?.id === size.id 
+                            ? 'border-primary bg-primary/10 text-primary' 
+                            : 'border-gray-200 text-gray-600 hover:border-gray-300'
+                        }`}
+                      >
+                        {size.name}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Bordas */}
-              <div className="mb-6">
-                <h3 className="font-bold text-lg mb-3">Borda</h3>
-                <div className="flex flex-col gap-2">
-                  {crusts.map((crust) => (
-                    <button 
-                      key={crust.id}
-                      onClick={() => setSelectedCrust(crust)}
-                      className={`py-3 px-4 rounded-lg border flex justify-between items-center transition-all ${
-                        selectedCrust?.id === crust.id 
-                          ? 'border-primary bg-primary/10 text-primary' 
-                          : 'border-gray-200 text-gray-600 hover:border-gray-300'
-                      }`}
-                    >
-                      <span className="font-semibold">{crust.name}</span>
-                      <span className="text-sm">
-                        {parseFloat(crust.price_modifier) > 0 ? `+ R$ ${crust.price_modifier}` : 'Grátis'}
-                      </span>
-                    </button>
-                  ))}
+                {/* Bordas */}
+                <div className="mb-6">
+                  <h3 className="font-bold text-lg mb-3">Borda</h3>
+                  <div className="flex flex-col gap-2">
+                    {crusts.map((crust) => (
+                      <button 
+                        key={crust.id}
+                        onClick={() => setSelectedCrust(crust)}
+                        className={`py-3 px-3 sm:px-4 rounded-lg border flex justify-between items-center transition-all ${
+                          selectedCrust?.id === crust.id 
+                            ? 'border-primary bg-primary/10 text-primary' 
+                            : 'border-gray-200 text-gray-600 hover:border-gray-300'
+                        }`}
+                      >
+                        <span className="font-semibold text-sm sm:text-base">{crust.name}</span>
+                        <span className="text-xs sm:text-sm">
+                          {parseFloat(crust.price_modifier) > 0 ? `+ R$ ${crust.price_modifier}` : 'Grátis'}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </>
-          )}
-
-          <div className="flex items-center justify-between mt-8 pt-4 border-t border-gray-100">
-            <div>
-              <p className="text-sm text-gray-500">Total a pagar</p>
-              <p className="text-2xl font-bold text-gray-900">R$ {calculateFinalPrice().toFixed(2)}</p>
-            </div>
-            <button onClick={handleAddToCart} className="btn-secondary px-8">
-              Adicionar ao Carrinho
-            </button>
+              </>
+            )}
           </div>
+        </div>
 
+        <div className="p-4 sm:p-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between shrink-0 bg-white rounded-b-2xl gap-4 sm:gap-0">
+          <div className="w-full sm:w-auto text-left">
+            <p className="text-sm text-gray-500">Total a pagar</p>
+            <p className="text-2xl font-bold text-gray-900">R$ {calculateFinalPrice().toFixed(2)}</p>
+          </div>
+          <button onClick={handleAddToCart} className="btn-secondary px-8 w-full sm:w-auto py-3 sm:py-2">
+            Adicionar ao Carrinho
+          </button>
         </div>
       </div>
     </div>
