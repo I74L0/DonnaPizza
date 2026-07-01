@@ -4,7 +4,7 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'donnapizza_api.settings')
 django.setup()
 
-from menu.models import Category, Product, Size, Crust
+from menu.models import Category, Product, Size, Crust  # noqa: E402
 
 def run():
     print("Criando categorias...")
